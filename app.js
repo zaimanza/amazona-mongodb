@@ -56,8 +56,8 @@ async function startApolloServer(typeDefs, resolvers) {
     // Same ApolloServer initialization as before, plus the drain plugin.
     const server = new ApolloServer({
         schema,
-        introspection: process.env.NODE_ENV !== 'production',
-        playground: process.env.NODE_ENV !== 'production',
+        introspection: process.env.NODE_ENV !== 'a',
+        playground: process.env.NODE_ENV !== 'a',
         plugins: [
             // ApolloServerPluginLandingPageGraphQLPlayground(),
             ApolloServerPluginDrainHttpServer({
