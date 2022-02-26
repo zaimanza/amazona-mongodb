@@ -1,4 +1,5 @@
 const User = require("../../models/user")
+const bcrypt = require("bcryptjs")
 
 exports.addOneUserSchema = `
     extend type Mutation {
@@ -22,7 +23,7 @@ exports.addOneUserController = {
                 const newUser = new User({
                     name: user.name,
                     email: user.email,
-                    password: user.password,
+                    password: await bcrypt.hash(user.password, 12),
                     isAdmin: user.isAdmin,
                 })
 
