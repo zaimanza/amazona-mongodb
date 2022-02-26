@@ -13,6 +13,11 @@ const {
 } = require("./add-one-product");
 
 const {
+    getOneProductSchema,
+    getOneProductController
+} = require("./get-one-product.js");
+
+const {
     getProductSchema,
     getProductController
 } = require("./get-product.js");
@@ -20,6 +25,7 @@ const {
 exports.productSchema = `
     ${addManyProductSchema}
     ${addOneProductSchema}
+    ${getOneProductSchema}
     ${getProductSchema}
   
   `;
@@ -27,5 +33,6 @@ exports.productSchema = `
 exports.productController = merge({},
     addManyProductController,
     addOneProductController,
+    getOneProductController,
     getProductController,
 );
