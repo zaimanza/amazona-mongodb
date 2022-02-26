@@ -26,13 +26,11 @@ module.exports = async (req, res, next) => {
         return next();
     }
 
-    if (data.vendorId) {
-        req.vendorId = data.vendorId;
+    if (data._id) {
+        req._id = data._id;
         req.name = data.name;
         req.email = data.email;
-        req.pNumber = data.pNumber;
-        req.fcmToken = data.fcmToken;
-        req.isAuth = true;
+        req.isAdmin = data.isAdmin;
     }
     return next();
 };

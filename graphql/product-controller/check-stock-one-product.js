@@ -4,7 +4,8 @@ exports.checkStockOneProductSchema = `
 
 extend type Query {
     checkStockOneProduct(
-        id: String!
+        id: String!,
+        quantity: Int!,
     ): Boolean!
 }
 `;
@@ -13,6 +14,7 @@ exports.checkStockOneProductController = {
     Query: {
         checkStockOneProduct: async (root, {
             id,
+            quantity,
         }, {
             req,
             errorName
@@ -23,8 +25,13 @@ exports.checkStockOneProductController = {
 
                 if (!productExist)
                     return false
-                else
-                    return true
+
+
+                if (productExist.countInStock < quantity) {
+                    return false;
+                }
+
+                return true
 
             } catch (err) {
                 throw err;

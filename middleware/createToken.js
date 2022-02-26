@@ -1,16 +1,17 @@
 const jwt = require("jsonwebtoken");
 
-exports.createVendorAccessToken = (vendor, fcmToken) => {
+exports.signToken = (user) => {
+    return jwt.sign(
+        {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+        },
 
-    const accessToken = jwt.sign({
-        vendorId: vendor.id,
-        name: vendor.name,
-        email: vendor.email,
-        pNumber: vendor.pNumber,
-        fcmToken: fcmToken,
-    },
-        process.env.AUTH_KEY);
-    return {
-        accessToken
-    };
+        process.env.JWT_SECRET,
+        {
+            expiresIn: '30d',
+        }
+    );
 };

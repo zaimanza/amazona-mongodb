@@ -1,15 +1,15 @@
 const Product = require("../../models/product")
 
-exports.getProductSchema = `
+exports.getManyProductSchema = `
 
 extend type Query {
-    getProduct: [productRes!]
+    getManyProduct: [productRes!]
 }
 `;
 
-exports.getProductController = {
+exports.getManyProductController = {
     Query: {
-        getProduct: async (root, {
+        getManyProduct: async (root, {
         }, {
             req,
             errorName
