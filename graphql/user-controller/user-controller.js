@@ -22,11 +22,17 @@ const {
     getManyUserController
 } = require("./get-many-user");
 
+const {
+    userLoginSchema,
+    userLoginController
+} = require("./user-login");
+
 exports.userSchema = `
     ${addManyUserSchema}
     ${addOneUserSchema}
     ${getOneUserSchema}
     ${getManyUserSchema}
+    ${userLoginSchema}
   
   `;
 
@@ -35,4 +41,5 @@ exports.userController = merge({},
     addOneUserController,
     getOneUserController,
     getManyUserController,
+    userLoginController,
 );

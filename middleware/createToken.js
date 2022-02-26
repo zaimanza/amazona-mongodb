@@ -9,7 +9,7 @@ exports.signToken = (user) => {
             isAdmin: user.isAdmin,
         },
 
-        process.env.JWT_SECRET,
+        process.env.AUTH_KEY,
         {
             expiresIn: '30d',
         }
