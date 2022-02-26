@@ -20,8 +20,26 @@ const {
     productController
 } = require("./product-controller/product-controller");
 
-const typeDefs = gql`
+const {
+    userSchema,
+    userController
+} = require("./user-controller/user-controller");
 
+const typeDefs = gql`
+input userReq {
+    name: String,
+    email: String,
+    password: String,
+    isAdmin: Boolean,
+}
+
+type userRes {
+    _id: String!,
+    name: String,
+    email: String,
+    password: String,
+    isAdmin: Boolean,
+}
 
 input productReq {
     name: String,
@@ -59,11 +77,13 @@ type productRes {
   } 
   
   ${productSchema}
+  ${userSchema}
  `;
 
 const resolvers = merge(
     {},
     productController,
+    userController,
 );
 
 const schema = makeExecutableSchema({
