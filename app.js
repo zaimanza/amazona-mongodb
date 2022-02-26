@@ -56,8 +56,8 @@ async function startApolloServer(typeDefs, resolvers) {
     // Same ApolloServer initialization as before, plus the drain plugin.
     const server = new ApolloServer({
         schema,
-        introspection: process.env.NODE_ENV !== 'a',
-        playground: process.env.NODE_ENV !== 'a',
+        introspection: process.env.NODE_ENV !== 'production',
+        playground: process.env.NODE_ENV !== 'production',
         plugins: [
             // ApolloServerPluginLandingPageGraphQLPlayground(),
             ApolloServerPluginDrainHttpServer({
@@ -65,7 +65,7 @@ async function startApolloServer(typeDefs, resolvers) {
             }),
             {
                 async serverLandingPage() {
-                    if (process.env.NODE_ENV === 'a') {
+                    if (process.env.NODE_ENV === 'production') {
                         return ApolloServerPluginLandingPageProductionDefault({
                             graphRef: "My-Graph-2-wtim1@current",
                             footer: false,
