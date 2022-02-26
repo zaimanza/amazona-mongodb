@@ -21,6 +21,35 @@ const {
 } = require("./product-controller/product-controller");
 
 const typeDefs = gql`
+
+
+input productReq {
+    name: String,
+    slug: String,
+    category: String,
+    image: String,
+    price: Float,
+    brand: String,
+    rating: Float,
+    numReviews: Int,
+    countInStock: Int,
+    description: String,
+}
+
+type productRes {
+    _id: String!,
+    name: String,
+    slug: String,
+    category: String,
+    image: String,
+    price: Float,
+    brand: String,
+    rating: Float,
+    numReviews: Int,
+    countInStock: Int,
+    description: String,
+}
+
  type Query {
     _empty: String 
  }

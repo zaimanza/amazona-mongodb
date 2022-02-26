@@ -3,15 +3,29 @@ const {
 } = require('lodash');
 
 const {
-    addProductSchema,
-    addProductController
-} = require("./add-product");
+    addManyProductSchema,
+    addManyProductController
+} = require("./add-many-product");
+
+const {
+    addOneProductSchema,
+    addOneProductController
+} = require("./add-one-product");
+
+const {
+    getProductSchema,
+    getProductController
+} = require("./get-product.js");
 
 exports.productSchema = `
-    ${addProductSchema}
+    ${addManyProductSchema}
+    ${addOneProductSchema}
+    ${getProductSchema}
   
   `;
 
 exports.productController = merge({},
-    addProductController,
+    addManyProductController,
+    addOneProductController,
+    getProductController,
 );
