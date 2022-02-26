@@ -65,7 +65,7 @@ async function startApolloServer(typeDefs, resolvers) {
             }),
             {
                 async serverLandingPage() {
-                    if (process.env.NODE_ENV === 'production') {
+                    if (process.env.NODE_ENV === 'a') {
                         return ApolloServerPluginLandingPageProductionDefault({
                             graphRef: "My-Graph-2-wtim1@current",
                             footer: false,
