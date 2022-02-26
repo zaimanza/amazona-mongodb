@@ -27,12 +27,18 @@ const {
     userLoginController
 } = require("./user-login");
 
+const {
+    userRegisterSchema,
+    userRegisterController
+} = require("./user-register");
+
 exports.userSchema = `
     ${addManyUserSchema}
     ${addOneUserSchema}
     ${getOneUserSchema}
     ${getManyUserSchema}
     ${userLoginSchema}
+    ${userRegisterSchema}
   
   `;
 
@@ -42,4 +48,5 @@ exports.userController = merge({},
     getOneUserController,
     getManyUserController,
     userLoginController,
+    userRegisterController,
 );
