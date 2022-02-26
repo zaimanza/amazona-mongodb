@@ -1,4 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
+
+const conn = require("../middleware/connection");
 
 const reviewSchema = new mongoose.Schema(
     {
@@ -33,6 +35,4 @@ const productSchema = new mongoose.Schema(
     }
 );
 
-const Product =
-    mongoose.models.Product || mongoose.model('Product', productSchema);
-export default Product;
+module.exports = conn.dropgodb.model("Product", productSchema);

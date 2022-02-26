@@ -1,4 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
+
+const conn = require("../middleware/connection");
 
 const orderSchema = new mongoose.Schema(
     {
@@ -42,5 +44,4 @@ const orderSchema = new mongoose.Schema(
     }
 );
 
-const Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
-export default Order;
+module.exports = conn.dropgodb.model("Order", orderSchema);
