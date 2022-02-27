@@ -5,7 +5,10 @@ exports.payOrderSchema = `
 
 extend type Query {
     payOrder(
-        id: String!
+        orderId: String!,
+        id: String!,
+        status: String!,
+        email_address: String!,
     ): orderRes!
 }
 `;
@@ -13,21 +16,24 @@ extend type Query {
 exports.payOrderController = {
     Query: {
         payOrder: async (root, {
+            orderId,
             id,
+            status,
+            email_address,
         }, {
             req,
             errorName
         }) => {
             try {
 
-                const order = await Order.findOne({ _id: id, })
+                const order = await Order.findOne({ _id: orderId, })
                 if (order) {
                     order.isPaid = true;
                     order.paidAt = Date.now();
                     order.paymentResult = {
-                        id: req.body.id,
-                        status: req.body.status,
-                        email_address: req.body.email_address,
+                        id: id,
+                        status: status,
+                        email_address: email_address,
                     };
                     const paidOrder = await order.save();
 
