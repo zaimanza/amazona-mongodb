@@ -16,6 +16,11 @@ const {
 } = require('@graphql-tools/schema');
 
 const {
+    adminSchema,
+    adminController
+} = require("./admin-controller/admin-controller");
+
+const {
     orderSchema,
     orderController
 } = require("./order-controller/order-controller");
@@ -167,6 +172,7 @@ type productRes {
      _empty: String 
   } 
   
+  ${adminSchema}
   ${orderSchema}
   ${paypalSchema}
   ${productSchema}
@@ -175,6 +181,7 @@ type productRes {
 
 const resolvers = merge(
     {},
+    adminController,
     orderController,
     paypalController,
     productController,
