@@ -21,6 +21,11 @@ const {
 } = require("./order-controller/order-controller");
 
 const {
+    paypalSchema,
+    paypalController
+} = require("./paypal-controller/paypal-controller");
+
+const {
     productSchema,
     productController
 } = require("./product-controller/product-controller");
@@ -163,6 +168,7 @@ type productRes {
   } 
   
   ${orderSchema}
+  ${paypalSchema}
   ${productSchema}
   ${userSchema}
  `;
@@ -170,6 +176,7 @@ type productRes {
 const resolvers = merge(
     {},
     orderController,
+    paypalController,
     productController,
     userController,
 );

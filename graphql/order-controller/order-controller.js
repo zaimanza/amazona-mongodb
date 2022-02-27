@@ -12,12 +12,19 @@ const {
     getOneOrderController
 } = require("./get-one-order");
 
+const {
+    payOrderSchema,
+    payOrderController
+} = require("./pay-order");
+
 exports.orderSchema = `
 ${addOrderSchema}
 ${getOneOrderSchema}
+${payOrderSchema}
   `;
 
 exports.orderController = merge({},
     addOrderController,
     getOneOrderController,
+    payOrderController,
 );
