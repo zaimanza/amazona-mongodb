@@ -16,6 +16,11 @@ const {
 } = require('@graphql-tools/schema');
 
 const {
+    orderSchema,
+    orderController
+} = require("./order-controller/order-controller");
+
+const {
     productSchema,
     productController
 } = require("./product-controller/product-controller");
@@ -26,6 +31,87 @@ const {
 } = require("./user-controller/user-controller");
 
 const typeDefs = gql`
+input orderItemReq {
+    name: String,
+    quantity: Int,
+    image: String,
+    price: Float,
+}
+
+input shippingAddressReq {
+    fullName: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: String,
+    location: locationReq,
+}
+
+input locationReq {
+    lat: String,
+    lng: String,
+    address: String,
+    name: String,
+    vicinity: String,
+    googleAddressId: String,
+}
+
+type orderItemRes {
+    id: String!,
+    name: String,
+    quantity: Int,
+    image: String,
+    price: Float,
+}
+
+type shippingAddressRes {
+    fullName: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: String,
+    location: locationRes,
+}
+
+type locationRes {
+    lat: String,
+    lng: String,
+    address: String,
+    name: String,
+    vicinity: String,
+    googleAddressId: String,
+}
+
+type userPrivateRes {
+    _id: String!,
+    name: String,
+    email: String,
+    isAdmin: Boolean,
+}
+
+type paymentResultRes {
+    id: String,
+    status: String,
+    email_address: String,
+}
+
+type orderRes {
+    _id: String!,
+    user: userPrivateRes,
+    shippingAddress: shippingAddressRes,
+    paymentMethod: String,
+    paymentResult: paymentResultRes,
+    itemsPrice: Float,
+    shippingPrice: Float,
+    taxPrice: Float,
+    totalPrice: Float,
+    isPaid: Boolean,
+    isDelivered: Boolean,
+    paidAt: String,
+    deliveredAt: String,
+    orderItems: [orderItemRes!],
+}
+
 input userReq {
     name: String,
     email: String,
@@ -76,12 +162,14 @@ type productRes {
      _empty: String 
   } 
   
+  ${orderSchema}
   ${productSchema}
   ${userSchema}
  `;
 
 const resolvers = merge(
     {},
+    orderController,
     productController,
     userController,
 );

@@ -44,7 +44,7 @@ exports.userLoginController = {
                         isAdmin: user.isAdmin,
                     }
                 } else {
-                    res.status(401).send({ message: 'Invalid email or password' });
+                    console.log("Error");
                 }
 
             } catch (err) {
