@@ -57,7 +57,7 @@ input locationReq {
 }
 
 type orderItemRes {
-    id: String!,
+    _id: String!,
     name: String,
     quantity: Int,
     image: String,

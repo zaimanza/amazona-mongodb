@@ -36,7 +36,7 @@ exports.addOrderController = {
                 if (!req._id) {
                     throw new Error(errorName.UNAUTHORIZED);
                 }
-
+                // console.log(orderItems)
                 const newOrder = new Order({
                     user: req._id,
                     orderItems: orderItems,
@@ -48,6 +48,7 @@ exports.addOrderController = {
                     totalPrice: totalPrice,
                 })
 
+                // console.log(newOrder)
                 const [savedOrder] = [await newOrder.save()];
                 console.log(savedOrder)
                 return {
