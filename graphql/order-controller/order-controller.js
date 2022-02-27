@@ -7,11 +7,17 @@ const {
     addOrderController
 } = require("./add-order");
 
+const {
+    getOneOrderSchema,
+    getOneOrderController
+} = require("./get-one-order");
+
 exports.orderSchema = `
-    ${addOrderSchema}
-  
+${addOrderSchema}
+${getOneOrderSchema}
   `;
 
 exports.orderController = merge({},
     addOrderController,
+    getOneOrderController,
 );
