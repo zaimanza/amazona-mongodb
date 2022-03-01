@@ -22,11 +22,17 @@ const {
     payOrderController
 } = require("./pay-order");
 
+const {
+    updateOrderDeliverSchema,
+    updateOrderDeliverController
+} = require("./update-order-deliver");
+
 exports.orderSchema = `
 ${addOrderSchema}
 ${getOneOrderSchema}
 ${getUserManyOrderSchema}
 ${payOrderSchema}
+${updateOrderDeliverSchema}
   `;
 
 exports.orderController = merge({},
@@ -34,4 +40,5 @@ exports.orderController = merge({},
     getOneOrderController,
     getUserManyOrderController,
     payOrderController,
+    updateOrderDeliverController,
 );
