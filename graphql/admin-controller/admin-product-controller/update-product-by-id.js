@@ -24,6 +24,7 @@ exports.updateProductByIdController = {
                     throw new Error(errorName.UNAUTHORIZED);
                 }
                 const productExists = await Product.exists({ _id: id, })
+
                 if (productExists) {
                     let toUpdateProductInfo = {}
                     if (updateData.name) toUpdateProductInfo.name = updateData.name;
@@ -34,7 +35,7 @@ exports.updateProductByIdController = {
                     if (updateData.brand) toUpdateProductInfo.brand = updateData.brand;
                     if (updateData.countInStock) toUpdateProductInfo.countInStock = updateData.countInStock;
                     if (updateData.description) toUpdateProductInfo.description = updateData.description;
-                    if (updateData.toUpdateProductInfo)
+                    if (toUpdateProductInfo)
                         await Product.update({ _id: id, },
                             {
                                 $set: toUpdateProductInfo
