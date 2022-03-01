@@ -137,6 +137,17 @@ type userRes {
     isAdmin: Boolean,
 }
 
+input updateProductReq {
+    name: String,
+    slug: String,
+    category: String,
+    image: String,
+    price: Float,
+    brand: String,
+    countInStock: Int,
+    description: String,
+}
+
 input productReq {
     name: String,
     slug: String,
