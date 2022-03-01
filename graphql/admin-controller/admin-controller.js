@@ -7,11 +7,18 @@ const {
     dashboardSummaryController
 } = require("./dashboard-summary");
 
+const {
+    getManyOrderSchema,
+    getManyOrderController
+} = require("./get-many-order");
+
 exports.adminSchema = `
-    ${dashboardSummarySchema}
+${dashboardSummarySchema}
+${getManyOrderSchema}
   
   `;
 
 exports.adminController = merge({},
     dashboardSummaryController,
+    getManyOrderController,
 );
