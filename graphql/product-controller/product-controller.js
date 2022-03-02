@@ -32,6 +32,11 @@ const {
     getManyProductController
 } = require("./get-many-product.js");
 
+const {
+    s3ProductUploadUrlSchema,
+    s3ProductUploadUrlController
+} = require("./s3-product-upload-url");
+
 exports.productSchema = `
     ${addManyProductSchema}
     ${addOneProductSchema}
@@ -39,6 +44,7 @@ exports.productSchema = `
     ${getOneProductSchema}
     ${getManyProductCategorySchema}
     ${getManyProductSchema}
+    ${s3ProductUploadUrlSchema}
   
   `;
 
@@ -49,4 +55,5 @@ exports.productController = merge({},
     getOneProductController,
     getManyProductCategoryController,
     getManyProductController,
+    s3ProductUploadUrlController,
 );

@@ -26,6 +26,7 @@
     "@graphql-tools/schema": "^8.3.2",
     "apollo-server-core": "^3.6.3",
     "apollo-server-express": "^3.6.3",
+    "aws-sdk": "^2.1084.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "concurrently": "^7.0.0",
@@ -47,6 +48,7 @@
     "nodemailer-express-handlebars": "^4.0.0",
     "path": "^0.12.7",
     "subscriptions-transport-ws": "^0.11.0",
+    "util": "^0.12.4",
     "validator": "^13.7.0"
   }
 }
