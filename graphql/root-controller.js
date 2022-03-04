@@ -180,6 +180,7 @@ type reviewRes {
     name: String,
     rating: Int,
     comment: String,
+    createdAt: String,
 }
 
  type Query {

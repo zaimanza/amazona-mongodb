@@ -26,6 +26,7 @@ exports.getProductManyReviewByIdController = {
                     return {
                         ...review._doc,
                         user: mergeModel.user(review.user),
+                        createdAt: review.createdAt
                     }
                 })
 
