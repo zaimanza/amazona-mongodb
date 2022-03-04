@@ -24,8 +24,8 @@ exports.deleteProductByIdController = {
                 }
 
                 const deletedProduct = await Product.findOneAndDelete({ _id: id, })
-                await deleteObjectFromURL(deletedProduct.image)
-                return true
+                return await deleteObjectFromURL(deletedProduct.image)
+
 
             } catch (err) {
                 throw err;
