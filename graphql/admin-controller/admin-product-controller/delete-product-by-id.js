@@ -23,7 +23,7 @@ exports.deleteProductByIdController = {
                     throw new Error(errorName.UNAUTHORIZED);
                 }
 
-                const deletedProduct = await Product.findOne({ _id: id, })
+                const deletedProduct = await Product.findOneAndDelete({ _id: id, })
                 return await deleteObjectFromURL(deletedProduct.image)
 
 
