@@ -1,18 +1,22 @@
 const User = require("../../../models/user")
 
-exports.getAdminUserByIdSchema = `
+exports.updateAdminUserByIdSchema = `
 
 extend type Query {
-    getAdminUserById(
-        id: String!
-    ): userRes!
+    updateAdminUserById(
+        id: String!,
+        name: String,
+        email: String
+    ): Boolean!
 }
 `;
 
-exports.getAdminUserByIdController = {
+exports.updateAdminUserByIdController = {
     Query: {
-        getAdminUserById: async (root, {
+        updateAdminUserById: async (root, {
             id,
+            name,
+            email,
         }, {
             req,
             errorName
@@ -23,10 +27,12 @@ exports.getAdminUserByIdController = {
                 }
 
                 const user = await User.findOne({ _id: id, })
-                return {
-                    ...user._doc,
-                    _id: user.id,
-                }
+                if (name) user.name = name;
+                if (email) user.email = email;
+
+                await user.save();
+
+                return true
 
             } catch (err) {
                 throw err;

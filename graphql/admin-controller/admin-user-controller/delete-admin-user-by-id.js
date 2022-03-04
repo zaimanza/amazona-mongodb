@@ -1,17 +1,17 @@
 const User = require("../../../models/user")
 
-exports.getAdminUserByIdSchema = `
+exports.deleteAdminUserByIdSchema = `
 
 extend type Query {
-    getAdminUserById(
+    deleteAdminUserById(
         id: String!
-    ): userRes!
+    ): Boolean!
 }
 `;
 
-exports.getAdminUserByIdController = {
+exports.deleteAdminUserByIdController = {
     Query: {
-        getAdminUserById: async (root, {
+        deleteAdminUserById: async (root, {
             id,
         }, {
             req,
@@ -22,11 +22,8 @@ exports.getAdminUserByIdController = {
                     throw new Error(errorName.UNAUTHORIZED);
                 }
 
-                const user = await User.findOne({ _id: id, })
-                return {
-                    ...user._doc,
-                    _id: user.id,
-                }
+                const user = await User.deleteOne({ _id: id, })
+                return true
 
             } catch (err) {
                 throw err;
