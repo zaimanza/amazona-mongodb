@@ -43,8 +43,8 @@ const deleteObjectFromURL = async (imageURL) => {
         }
         // res.status(200).send("File has been deleted successfully");
 
+        return true
     })
-    return true
 }
 
 exports.deleteObjectFromURL = deleteObjectFromURL;
