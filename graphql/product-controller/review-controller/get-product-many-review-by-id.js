@@ -23,7 +23,6 @@ exports.getProductManyReviewByIdController = {
                 const product = await Product.findOne({ _id: id, }).populate('reviews')
 
                 return product.reviews.map((review) => {
-                    console.log(review.createdAt)
                     return {
                         ...review._doc,
                         user: mergeModel.user(review.user),
