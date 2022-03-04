@@ -32,8 +32,9 @@ const generateUploadURL = async () => {
 exports.generateUploadURL = generateUploadURL;
 
 const deleteObjectFromURL = async (imageURL) => {
+    console.log(imageURL)
     let PREFIX = "https://amazona-nextjs.s3.amazonaws.com/";
-    s3.deleteObject({
+    await s3.deleteObject({
         Bucket: bucketName,
         Key: imageURL.slice(PREFIX.length)
     }, function (err, data) {
@@ -43,8 +44,8 @@ const deleteObjectFromURL = async (imageURL) => {
         }
         // res.status(200).send("File has been deleted successfully");
 
-        return true
     })
+    return true
 }
 
 exports.deleteObjectFromURL = deleteObjectFromURL;
