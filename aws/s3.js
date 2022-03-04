@@ -32,7 +32,7 @@ const generateUploadURL = async () => {
 exports.generateUploadURL = generateUploadURL;
 
 const deleteObjectFromURL = async (imageURL) => {
-    let PREFIX = "https://amazona-nextjs.s3.amazonaws.com/products/";
+    let PREFIX = "https://amazona-nextjs.s3.amazonaws.com/";
     s3.deleteObject({
         Bucket: bucketName,
         Key: imageURL.slice(PREFIX.length)
