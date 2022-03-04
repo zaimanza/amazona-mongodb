@@ -6,7 +6,7 @@ extend type Query {
     updateAdminUserById(
         id: String!,
         name: String,
-        email: String
+        isAdmin: Boolean
     ): Boolean!
 }
 `;
@@ -16,7 +16,7 @@ exports.updateAdminUserByIdController = {
         updateAdminUserById: async (root, {
             id,
             name,
-            email,
+            isAdmin,
         }, {
             req,
             errorName
@@ -28,7 +28,7 @@ exports.updateAdminUserByIdController = {
 
                 const user = await User.findOne({ _id: id, })
                 if (name) user.name = name;
-                if (email) user.email = email;
+                if (isAdmin || isAdmin == false) user.isAdmin = isAdmin;
 
                 await user.save();
 
