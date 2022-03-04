@@ -37,7 +37,7 @@ const deleteObjectFromURL = async (imageURL) => {
         Bucket: bucketName,
         Key: imageURL.slice(PREFIX.length)
     }, function (err, data) {
-        if (error) {
+        if (err) {
             return false
             // res.status(500).send(error);
         }
