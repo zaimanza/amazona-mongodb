@@ -3,6 +3,11 @@ const {
 } = require('lodash');
 
 const {
+    addDummyProductSchema,
+    addDummyProductController
+} = require("./add-dummy-product");
+
+const {
     deleteProductByIdSchema,
     deleteProductByIdController
 } = require("./delete-product-by-id");
@@ -18,6 +23,7 @@ const {
 } = require("./update-product-by-id");
 
 exports.adminProductSchema = `
+${addDummyProductSchema}
 ${deleteProductByIdSchema}
 ${getProductByIdSchema}
 ${updateProductByIdSchema}
@@ -25,6 +31,7 @@ ${updateProductByIdSchema}
   `;
 
 exports.adminProductController = merge({},
+    addDummyProductController,
     deleteProductByIdController,
     getProductByIdController,
     updateProductByIdController,
