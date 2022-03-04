@@ -39,9 +39,9 @@ const deleteObjectFromURL = async (imageURL) => {
     }, function (err, data) {
         if (error) {
             return false
-            res.status(500).send(error);
+            // res.status(500).send(error);
         }
-        res.status(200).send("File has been deleted successfully");
+        // res.status(200).send("File has been deleted successfully");
 
     })
     return true
