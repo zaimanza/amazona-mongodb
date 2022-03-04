@@ -37,6 +37,7 @@ const deleteObjectFromURL = async (imageURL) => {
         Bucket: bucketName,
         Key: imageURL.slice(PREFIX.length)
     }, function (err, data) { })
+    return true
 }
 
 exports.deleteObjectFromURL = deleteObjectFromURL;
