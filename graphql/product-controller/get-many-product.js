@@ -16,7 +16,7 @@ exports.getManyProductController = {
         }) => {
             try {
 
-                const products = await Product.find({})
+                const products = await Product.find({}).populate('reviews')
                 return products.map(product => {
                     return {
                         ...product._doc,
