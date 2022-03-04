@@ -19,7 +19,7 @@ exports.getOneProductController = {
         }) => {
             try {
 
-                const product = await Product.findOne({ slug: slug, })
+                const product = await Product.findOne({ slug: slug, }).populate('reviews')
                 return {
                     ...product._doc,
                     _id: product.id,
