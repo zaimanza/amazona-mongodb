@@ -17,7 +17,7 @@ const s3 = new aws.S3({
 
 const generateUploadURL = async () => {
     const rawBytes = await randomBytes(16)
-    const imageName = "products" + rawBytes.toString('hex')
+    const imageName = "products/" + rawBytes.toString('hex')
 
     const params = ({
         Bucket: bucketName,
@@ -30,3 +30,13 @@ const generateUploadURL = async () => {
 }
 
 exports.generateUploadURL = generateUploadURL;
+
+const deleteObjectFromURL = async (imageURL) => {
+    let PREFIX = "https://amazona-nextjs.s3.amazonaws.com/products/";
+    s3.deleteObject({
+        Bucket: bucketName,
+        Key: imageURL.slice(PREFIX.length)
+    }, function (err, data) { })
+}
+
+exports.deleteObjectFromURL = deleteObjectFromURL;
