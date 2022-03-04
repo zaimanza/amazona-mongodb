@@ -3,6 +3,11 @@ const {
 } = require('lodash');
 
 const {
+    productReviewSchema,
+    productReviewController
+} = require("./review-controller/review-controller");
+
+const {
     addManyProductSchema,
     addManyProductController
 } = require("./add-many-product");
@@ -38,6 +43,7 @@ const {
 } = require("./s3-product-upload-url");
 
 exports.productSchema = `
+    ${productReviewSchema}
     ${addManyProductSchema}
     ${addOneProductSchema}
     ${checkStockOneProductSchema}
@@ -49,6 +55,7 @@ exports.productSchema = `
   `;
 
 exports.productController = merge({},
+    productReviewController,
     addManyProductController,
     addOneProductController,
     checkStockOneProductController,

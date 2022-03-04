@@ -175,6 +175,13 @@ type productRes {
     description: String,
 }
 
+type reviewRes {
+    user: userPrivateRes,
+    name: String,
+    rating: Int,
+    comment: String,
+}
+
  type Query {
     _empty: String 
  }
