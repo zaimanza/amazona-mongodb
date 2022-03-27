@@ -32,6 +32,11 @@ exports.userLoginController = {
             errorName
         }) => {
             try {
+                if (!req.vendorId || !req.isAuth) {
+                    throw new Error(errorName.UNAUTHORIZED);
+                    console.log('hi')
+                }
+                console.log('hilua')
 
                 const user = await User.findOne({ email: email, })
                 if (user && bcrypt.compare(password, user.password)) {
