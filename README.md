@@ -1,4 +1,4 @@
-## amazona-mongodb
+## amazona-mongodb-graphql
 This is a backend API for https://github.com/zaimanza/amazona-nextjs.git
 For this API impolementation, Graphql and MongoDB is used to store query datas and control dataflows.
 
